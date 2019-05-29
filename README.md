@@ -1,5 +1,5 @@
 # Fun Projects
-# -------------------------------------------
+#
 # Adder - summation
 # Bingo - simple game
 # Calculator - four function calc
@@ -7,5 +7,6 @@
 # Reminder - timer
 # Temp Convert - converts between C/F
 # Tic-Tac-Toe - simple game
+# Loops - a loop compilation
 # Math - calculates volume of different shapes
 # Quad Solver - solves quadratic equations
