@@ -1,63 +1,30 @@
 import java.util.Scanner;
-public class codes {
-	
-	
-	static String input;
-	static String method;
 
-	
-	static void caesar() {
-		System.out.println("Enter shift amount:");
-		Scanner x = new Scanner(System.in);
-		String value = x.next();
-		int length = input.length();
-		
-		for(int i = 0; i < length; i++) {
-			char letter = input(i);
-			
-			System.out.print(letter);
+public class Main{
 
-		}
-
-		
+public static void main(String args[]) {
 	
-		
-		
-		
-		
+	Scanner input = new Scanner(System.in);
+  System.out.println("Enter plain text:");
+  String origin = input.nextLine();
+	char[] charlist = origin.toCharArray();
+  System.out.println("Enter shift:");
+  int shift = input.nextInt();
+	
+  System.out.println("Cipher text:");
+	 for (int i = 0; (i < charlist.length); i++) {
+        char letter = charlist[i];
+	      int ascii = letter;
+        if (ascii == 32) {
+System.out.print(" ");
+        } else {
+int crypt = ascii + shift;
+        int shiftedcrypt = crypt - 97;
+        int shiftedcryptmod = shiftedcrypt % 26;
+        int finalcrypt = shiftedcryptmod + 97;
+        System.out.print((char)finalcrypt);
+        }
+	 }
 	}
-	
-	
-	private static char input(int i) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	public static void main(String[] args) {
-		
-		System.out.println("Enter plaintext");
-		Scanner x = new Scanner(System.in);
-		input = x.next();
-		
-		System.out.println("Enter method (caesar,)");
-		Scanner y = new Scanner(System.in);
-		method = y.next();
-		
-		if(method.equals("caesar")) {
-			caesar();
-		}
-		else {
-			System.out.println("Syntax error");
-		}
-		
-		
-		
-		
-		
-		
-	}
-	
-	
-	
 }
+//Thanks to @YangJeffrey for the help
