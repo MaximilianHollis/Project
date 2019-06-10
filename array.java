@@ -3,15 +3,8 @@ import java.util.Scanner;
 
 public class array {
 
-		static int turn = 0;
-		static String[][] board = {{"0", "0", "0", "0", "0"},
-								{"0", "0", "0", "0", "0"},
-								{"0", "x", "x", "x", "0"},
-								{"0", "0", "0", "0", "0"},
-								{"0", "0", "0", "0", "0"}};
-	
-	
-		static void method() {
+	/**This method allows the user to control and view the generations*/
+		public static void method(int turn) {
 			
 			turn++;
 			System.out.println("This is turn: " + turn);
@@ -24,7 +17,20 @@ public class array {
 			
 		}
 		
-		static void print() {
+		/**This method prints and manages the board*/
+		public static void print() {
+			
+			String[][] board = {{"0", "0", "0", "0", "0"},
+					{"0", "0", "0", "0", "0"},
+					{"0", "x", "x", "x", "0"},
+					{"0", "0", "0", "0", "0"},
+					{"0", "0", "0", "0", "0"}};
+
+int[][] map = {{0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0},
+				{0, 0, 0, 0, 0}};
 			
 		for(int i = 0; i < 5; i++) {
 				
@@ -32,24 +38,56 @@ public class array {
 
 				System.out.print("[" + board[i][j] + "]");
 				
-				
-				}	
-				System.out.println();
-			} 
-						
-			
-			
-			
-			
-		}
-		
-		
-		
+						for(int q = -1; q < 1; q++) {
+							for(int w = -1; w < 1; w++) {
 
+								
+						int e = i + q;
+						int r = j + w;
+						if(e < 0) {
+							e = 0;
+						}
+						if(r < 0) {
+							r = 0;
+						}
+
+						if (board[(e)][(r)].equals("x")) {
 	
+							map[i][j]++;
+						}
+							}
+						}
+					
+							
+						
+					
+					
+			}
+				
+				System.out.println();
+			}
+		
+		System.out.println();
+		for(int i = 0; i < 5; i++) {
+			
+			for(int j = 0; j < 5; j++) {
+
+			System.out.print("[" + map[i][j] + "]");
+			}
+			System.out.println("");
+
+		}
+	
+		}
+
+		
+		
+		/**This main controls the two aforementioned methods*/
+
 		public static void main(String [] args) {
 			
-			method();
+			int turn = 0;
+			method(turn);
 			
 		}
 	
