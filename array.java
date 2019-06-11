@@ -22,9 +22,9 @@ public class array {
 			
 			String[][] board = {{"0", "0", "0", "0", "0"},
 					{"0", "0", "0", "0", "0"},
-					{"0", "x", "x", "x", "0"},
+					{"x", "x", "x", "x", "0"},
 					{"0", "0", "0", "0", "0"},
-					{"0", "0", "0", "0", "0"}};
+					{"0", "0", "0", "0", "x"}};
 
 int[][] map = {{0, 0, 0, 0, 0},
 				{0, 0, 0, 0, 0},
@@ -38,29 +38,37 @@ int[][] map = {{0, 0, 0, 0, 0},
 
 				System.out.print("[" + board[i][j] + "]");
 				
-						for(int q = -1; q < 1; q++) {
-							for(int w = -1; w < 1; w++) {
+						for(int q = -1; q < 2; q++) {
+							for(int w = -1; w < 2; w++) {
 
 								
 						int e = i + q;
 						int r = j + w;
-						if(e < 0) {
+						
+						if (e < 0) {
 							e = 0;
 						}
-						if(r < 0) {
+						if (r < 0) {
 							r = 0;
 						}
-
-						if (board[(e)][(r)].equals("x")) {
+						if (e > 4) {
+							e = 4;
+						}
+						if (r > 4) {
+							r = 4;
+						}
+						
+						if (board[(i)][(j)].equals("x") && ((i+q) > -1) && ((j+w) < 5)){
 	
-							map[i][j]++;
+							map[e][r]++;
 						}
 							}
 						}
-					
 							
-						
-					
+						if (board[(i)][(j)].equals("x")) {
+							map[i][j]--;
+						}
+
 					
 			}
 				
