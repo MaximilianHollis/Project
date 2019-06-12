@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class array {
 
 	/**This method allows the user to control and view the generations*/
-		public static void method(int turn) {
+		public static void method(int turn, String[][] board) {
 			
 			turn++;
 			System.out.println("This is turn: " + turn);
@@ -12,66 +12,38 @@ public class array {
 			Scanner input = new Scanner(System.in);
 			String move = input.next();
 			if (move.equals("y")) {
-			print();
+			print(turn, board);
 			};
 			
 		}
 		
 		/**This method prints and manages the board*/
-		public static void print() {
+		public static void print(int turn, String[][] board) {
 			
-			String[][] board = {{"0", "0", "0", "0", "0"},
-					{"0", "0", "0", "0", "0"},
-					{"x", "x", "x", "x", "0"},
-					{"0", "0", "0", "0", "0"},
-					{"0", "0", "0", "0", "x"}};
-
-int[][] map = {{0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0},
-				{0, 0, 0, 0, 0}};
+			int[][] map = {{0, 0, 0, 0, 0},
+					{0, 0, 0, 0, 0},
+					{0, 0, 0, 0, 0},
+					{0, 0, 0, 0, 0},
+					{0, 0, 0, 0, 0}};	
 			
-		for(int i = 0; i < 5; i++) {
-				
+		for(int i = 0; i < 5; i++) {		
 				for(int j = 0; j < 5; j++) {
-
 				System.out.print("[" + board[i][j] + "]");
-				
 						for(int q = -1; q < 2; q++) {
 							for(int w = -1; w < 2; w++) {
-
 								
 						int e = i + q;
 						int r = j + w;
 						
-						if (e < 0) {
-							e = 0;
-						}
-						if (r < 0) {
-							r = 0;
-						}
-						if (e > 4) {
-							e = 4;
-						}
-						if (r > 4) {
-							r = 4;
-						}
-						
-						if (board[(i)][(j)].equals("x") && ((i+q) > -1) && ((j+w) < 5)){
-	
+						if (board[(i)][(j)].equals("x") && (e > -1) && (r > -1) && (e < 5) && (r < 5)){
 							map[e][r]++;
 						}
 							}
 						}
-							
 						if (board[(i)][(j)].equals("x")) {
 							map[i][j]--;
 						}
-
-					
 			}
-				
 				System.out.println();
 			}
 		
@@ -81,11 +53,27 @@ int[][] map = {{0, 0, 0, 0, 0},
 			for(int j = 0; j < 5; j++) {
 
 			System.out.print("[" + map[i][j] + "]");
+			if((map[i][j] != 3) && (map[i][j] != 2)) {
+				board[i][j] = "0";
+			}else {
+				if(map[i][j]== 3) {
+					board[i][j] = "x";
+			}else {
+				if(map[i][j]== 2) {
+					if(board[i][j].equals("x")) {
+						board[i][j] = "x";
+					}else {
+						board[i][j] = "0";
+					}
+			}
+			}
+			}
 			}
 			System.out.println("");
 
 		}
-	
+
+     method(turn, board);
 		}
 
 		
@@ -94,8 +82,15 @@ int[][] map = {{0, 0, 0, 0, 0},
 
 		public static void main(String [] args) {
 			
+			String[][] board = {
+					{"0", "0", "0", "0", "0"},
+					{"0", "0", "0", "0", "0"},
+					{"0", "x", "x", "0", "0"},
+					{"0", "x", "x", "0", "0"},
+					{"0", "0", "0", "0", "0"}};
+
 			int turn = 0;
-			method(turn);
+			method(turn, board);
 			
 		}
 	
