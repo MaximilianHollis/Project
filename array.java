@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-public class array {
+public class gameoflife {
 
 	/**This method allows the user to control and view the generations*/
 		public static void method(int turn, String[][] board, int width) {
